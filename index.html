@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PULSE Athletic Club — Gym, HIIT &amp; Yoga Studio | Hamilton, ON</title>
+    <meta name="description" content="Hamilton's strength floor, engine room, and movement studio under one roof. 60+ classes a week, expert coaches, 24/7 open gym. Start your 7-day free trial.">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://images.pexels.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ExerciseGym",
+      "name": "PULSE Athletic Club",
+      "priceRange": "$$",
+      "telephone": "+1-905-555-7857",
+      "email": "hello@pulseathletic.ca",
+      "address": { "@type": "PostalAddress", "streetAddress": "77 King William St", "addressLocality": "Hamilton", "addressRegion": "ON", "postalCode": "L8R 1A2", "addressCountry": "CA" }
+    }
+    </script>
+</head>
+<body>
+    <!-- ===== Header / Nav ===== -->
+    <header class="site-header" id="top">
+        <div class="wrap nav">
+            <a href="#top" class="brand">
+                <svg class="brand-mark" aria-hidden="true" viewBox="0 0 100 100" width="22" height="22"><path d="M4 56 L28 56 L38 24 L52 78 L62 44 L70 56 L96 56" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span class="brand-name">PULSE</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">☰</button>
+            <nav class="nav-links" id="navLinks" aria-label="Primary">
+                <a href="#programs">Programs</a>
+                <a href="#schedule">Schedule</a>
+                <a href="#coaches">Coaches</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#visit">Visit</a>
+                <a href="#trial" class="nav-cta">Free Trial</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== Hero (three.js particle wave behind) ===== -->
+    <section class="hero" id="hero">
+        <canvas id="heroCanvas" aria-hidden="true"></canvas>
+        <div class="hero-fade" aria-hidden="true"></div>
+        <div class="wrap hero-inner">
+            <p class="eyebrow" data-fx>King William St · Hamilton, Ontario</p>
+            <h1 class="display" data-fx data-fx-delay="80">Find Your<br><span class="volt">Pulse</span></h1>
+            <p class="lede" data-fx data-fx-delay="160">Strength floor. Engine room. Movement studio. One roof, one membership — 60+ coached classes a week and a 24/7 open gym.</p>
+            <div class="hero-actions" data-fx data-fx-delay="240">
+                <a class="btn btn-primary" href="#trial" data-magnetic>Start 7-Day Free Trial</a>
+                <a class="btn btn-ghost" href="#schedule" data-magnetic>See the Schedule</a>
+            </div>
+        </div>
+        <div class="marquee" aria-hidden="true">
+            <div class="marquee-track">
+                <span>Strength</span><span>·</span><span>HIIT</span><span>·</span><span>Yoga</span><span>·</span><span>Spin</span><span>·</span><span>Mobility</span><span>·</span><span>Recovery</span><span>·</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Stats band ===== -->
+    <section class="stats-band">
+        <div class="wrap stats-row">
+            <div class="stat" data-fx><strong><span data-count-to="60">0</span>+</strong><span>Classes a week</span></div>
+            <div class="stat" data-fx data-fx-delay="80"><strong><span data-count-to="12">0</span></strong><span>Expert coaches</span></div>
+            <div class="stat" data-fx data-fx-delay="160"><strong><span data-count-to="1200">0</span>+</strong><span>Members strong</span></div>
+            <div class="stat" data-fx data-fx-delay="240"><strong><span data-count-to="24">0</span>/7</strong><span>Open gym access</span></div>
+        </div>
+    </section>
+
+    <!-- ===== Programs ===== -->
+    <section id="programs" class="section">
+        <div class="wrap">
+            <div class="section-head" data-fx>
+                <p class="eyebrow">Programs</p>
+                <h2 class="display-sm">Four Ways to Move</h2>
+            </div>
+            <div class="programs-grid" id="programsGrid"></div>
+        </div>
+    </section>
+
+    <!-- ===== Schedule ===== -->
+    <section id="schedule" class="section section-dark">
+        <div class="wrap">
+            <div class="section-head" data-fx>
+                <p class="eyebrow">This Week</p>
+                <h2 class="display-sm">The Schedule</h2>
+                <p class="section-sub">Pick a day, filter by discipline, claim your spot.</p>
+            </div>
+            <div class="sched-days" id="schedDays" role="tablist" aria-label="Day of week" data-fx></div>
+            <div class="sched-filters" id="schedFilters" aria-label="Class type filters" data-fx></div>
+            <div class="sched-list" id="schedList" data-fx></div>
+            <p class="sched-empty" id="schedEmpty" hidden>No classes of that type this day — try another filter.</p>
+        </div>
+    </section>
+
+    <!-- ===== Coaches ===== -->
+    <section id="coaches" class="section">
+        <div class="wrap">
+            <div class="section-head" data-fx>
+                <p class="eyebrow">Coaches</p>
+                <h2 class="display-sm">Built by People, Not Machines</h2>
+            </div>
+            <div class="coaches-grid" id="coachesGrid"></div>
+        </div>
+    </section>
+
+    <!-- ===== Facility strip ===== -->
+    <section class="facility" aria-label="Inside the club">
+        <div class="facility-img" id="facilityImg" data-parallax></div>
+        <div class="wrap facility-copy">
+            <p class="eyebrow" data-fx>The Space</p>
+            <h2 class="display-sm" data-fx data-fx-delay="80">12,000 sq ft of Intent</h2>
+            <p data-fx data-fx-delay="160">Competition racks and platforms, a turf-floored engine room, a candlelit movement studio, and a recovery lounge with sauna and cold plunge. Everything you need. Nothing you don't.</p>
+        </div>
+    </section>
+
+    <!-- ===== Pricing ===== -->
+    <section id="pricing" class="section section-dark">
+        <div class="wrap">
+            <div class="section-head" data-fx>
+                <p class="eyebrow">Membership</p>
+                <h2 class="display-sm">Simple Pricing, No Initiation Fees</h2>
+            </div>
+            <div class="pricing-grid" id="pricingGrid"></div>
+            <p class="pricing-fineprint" data-fx>Day pass $25 · Students &amp; first responders save 10% · Cancel anytime · All memberships include app booking</p>
+        </div>
+    </section>
+
+    <!-- ===== Testimonials ===== -->
+    <section class="section">
+        <div class="wrap">
+            <div class="section-head" data-fx>
+                <p class="eyebrow">Members</p>
+                <h2 class="display-sm">Word on the Floor</h2>
+            </div>
+            <div class="reviews-grid" id="reviewsGrid"></div>
+        </div>
+    </section>
+
+    <!-- ===== Free trial form ===== -->
+    <section id="trial" class="section section-tint">
+        <div class="wrap">
+            <div class="section-head" data-fx>
+                <p class="eyebrow">Free Trial</p>
+                <h2 class="display-sm">7 Days on Us</h2>
+                <p class="section-sub">Tell us what you're into — we'll set you up and give you the tour.</p>
+            </div>
+            <form id="trialForm" class="trial-form" data-fx>
+                <input type="checkbox" name="botcheck" class="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="interest">Most Interested In</label>
+                        <select id="interest" name="interest" required>
+                            <option value="">— Pick one —</option>
+                            <option value="Strength">Strength</option>
+                            <option value="HIIT / Conditioning">HIIT / Conditioning</option>
+                            <option value="Yoga / Mobility">Yoga / Mobility</option>
+                            <option value="Spin">Spin</option>
+                            <option value="Not sure yet">Not sure yet</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="timeslot">Best Time to Train</label>
+                        <select id="timeslot" name="timeslot" required>
+                            <option value="">— Pick one —</option>
+                            <option value="Early morning">Early morning</option>
+                            <option value="Lunch hour">Lunch hour</option>
+                            <option value="Evening">Evening</option>
+                            <option value="Weekend">Weekend</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="notes">Anything We Should Know? (optional)</label>
+                    <textarea id="notes" name="notes" rows="3" placeholder="Goals, injuries, questions — anything."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block" data-magnetic>Claim My Free Week</button>
+                <p id="trialNote" class="form-note">No card required. We'll text you to set up your first visit.</p>
+            </form>
+        </div>
+    </section>
+
+    <!-- ===== Visit / Hours / Map ===== -->
+    <section id="visit" class="section section-dark">
+        <div class="wrap">
+            <div class="section-head" data-fx>
+                <p class="eyebrow">Visit</p>
+                <h2 class="display-sm">Come See the Floor</h2>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-card" data-fx>
+                    <h3>Staffed Hours</h3>
+                    <p>
+                        Mon–Fri: 6 AM – 9 PM<br>
+                        Sat–Sun: 8 AM – 4 PM<br>
+                        Members: 24/7 fob access
+                    </p>
+                </div>
+                <div class="contact-card" data-fx data-fx-delay="80">
+                    <h3>Location</h3>
+                    <p>
+                        77 King William St<br>
+                        Hamilton, ON<br>
+                        L8R 1A2
+                    </p>
+                </div>
+                <div class="contact-card" data-fx data-fx-delay="160">
+                    <h3>Contact</h3>
+                    <p>
+                        <strong>Phone:</strong> (905) 555-7857<br>
+                        <strong>Email:</strong> hello@pulseathletic.ca<br>
+                        <strong>Instagram:</strong> @pulse.hamilton
+                    </p>
+                </div>
+            </div>
+            <div class="map-embed" data-fx>
+                <div class="map-fallback" aria-hidden="true">
+                    <p><strong>PULSE Athletic Club</strong><br>77 King William St, Hamilton, ON</p>
+                    <a class="btn btn-ghost" href="https://www.google.com/maps?q=77+King+William+St,+Hamilton,+ON" target="_blank" rel="noopener">Open in Google Maps</a>
+                </div>
+                <iframe src="https://www.google.com/maps?q=77+King+William+St,+Hamilton,+ON&output=embed" title="Map to PULSE Athletic Club, 77 King William St, Hamilton" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Footer ===== -->
+    <footer class="footer">
+        <div class="wrap">
+            <div class="footer-content">
+                <p>&copy; 2026 PULSE Athletic Club. All rights reserved.</p>
+                <p class="footer-credits">
+                    Built with <strong>PowerStudio</strong> Frameworks •
+                    Photos via <a href="https://pexels.com" target="_blank" rel="noopener">Pexels</a> •
+                    Forms via <a href="https://web3forms.com" target="_blank" rel="noopener">Web3Forms</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== Toast ===== -->
+    <div id="toast" class="toast" hidden role="status" aria-live="polite"></div>
+
+    <script src="app.js"></script>
+    <script src="fx.js"></script>
+    <script type="module" src="three-scene.js"></script>
+</body>
+</html>
