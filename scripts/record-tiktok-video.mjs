@@ -32,6 +32,10 @@ const browser = await chromium.launch({
   headless: true,
   args: ["--autoplay-policy=no-user-gesture-required"],
 });
+// The proven creator-portfolio recipe: 1080x1920 surface + CDP metrics override
+// (540x960 CSS at scale 2, mobile) = sharp full-frame 1080x1920 captures. Raw CDP
+// screenshots are also required: page.screenshot()'s internal stability waits
+// deadlock against the virtualized rAF clock below.
 const context = await browser.newContext({ viewport: { width: 1080, height: 1920 } });
 const page = await context.newPage();
 await page.goto("http://localhost:5610/", { waitUntil: "load" });
